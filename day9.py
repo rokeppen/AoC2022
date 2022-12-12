@@ -22,9 +22,6 @@ class Position:
     def copy(self):
         return Position(self.x, self.y)
 
-    def __repr__(self):
-        return str((self.x, self.y))
-
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
@@ -32,7 +29,7 @@ class Position:
         return self.x.__hash__() + 31 * self.y.__hash__()
 
 
-def walk(num_knots: int = 2):
+def walk(num_knots: int):
     positions, knots = {Position()}, [Position() for _ in range(num_knots)]
     for d in "".join(motion[0] * int(motion[2:]) for motion in lines):
         knots[0].move(d)
@@ -43,5 +40,5 @@ def walk(num_knots: int = 2):
 
 
 if __name__ == '__main__':
-    submit(walk(), 'a')
+    submit(walk(2), 'a')
     submit(walk(10), 'b')
